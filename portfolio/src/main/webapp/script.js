@@ -17,7 +17,8 @@
  */
 function addRandomGreeting() {
   const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+      ['For the honor of Grayskull!', 'Cookie Cat!',
+      'I am Sailor Moon! And now in the name of Moon I\'ll punish you!', 'See you Space Cowboy...'];
 
   // Pick a random greeting.
   const greeting = greetings[Math.floor(Math.random() * greetings.length)];
