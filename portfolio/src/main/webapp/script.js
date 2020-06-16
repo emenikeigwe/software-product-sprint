@@ -15,7 +15,7 @@
 /**
  * Adds a random greeting to the page.
  */
-function addRandomGreeting() {
+/*function addRandomGreeting() {
   const greetings =
       ['For the honor of Grayskull!', 'Cookie Cat!',
       'I am Sailor Moon! And now in the name of Moon I\'ll punish you!', 'See you Space Cowboy...'];
@@ -26,4 +26,4 @@ function addRandomGreeting() {
   // Add it to the page.
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
-}
+}*/

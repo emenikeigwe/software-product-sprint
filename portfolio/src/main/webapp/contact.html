@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Arlene's Portfolio</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+    </head>
+
+    <body>
+    <header>
+        <div class="header">
+            <div id="name-home">
+                <a href = "/">Arlene Godfreey-Igwe</a>
+            </div>
+            <ul class="pages">
+                <li id="page">
+                    <a href = "/about.html">About</a>
+                </li>
+                <li id="page">
+                    <a href= "/resume.html">Resume</a>
+                </li>
+                <li id="page" class = "current">
+                    <a href= "contact.html">Contact Me</a>
+                </li>
+                <li id = "page">
+                    <a href= "https://linkedin.com/in/arleneigwe" target = "_blank">
+                        <img src = "" alt = "LinkedIn">
+                    </a>
+                <li id = "page">
+                    <a href = "https://github.com/strugglebus129" target="_blank">
+                        <img src = "" alt = "Github">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <h1>Send Me an Email!</h1>
+    <form action="https://mailthis.to/arlene"
+    method="POST" encType="multipart/form-data">
+    <input type="text" name="name" placeholder="Your name">
+    <input type="email" name="_replyto" placeholder="Your email">
+    <textarea name="message" placeholder="Enter your message here"></textarea>
+    <input type="file" name="file" placeholder="Attachments (optional)">
+    <input type="hidden" name="_subject" value="Contact form submitted">
+    <input type="submit" value="Send">
+</form>
+
+    </body>
+</html>
