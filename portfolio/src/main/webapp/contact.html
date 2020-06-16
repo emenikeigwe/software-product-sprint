@@ -7,7 +7,7 @@
         <script src="script.js"></script>
     </head>
 
-    <body>
+    <body onload="getContent()">
     <header>
         <div class="header">
             <div id="name-home">
@@ -35,7 +35,14 @@
             </ul>
         </div>
     </header>
-    <h1>Send Me an Email!</h1>
+    <div id="content">
+      <h1>/Data Content</h1>
+      <div id="data-container"></div>
+    </div>
+    </body>
+</html>
+
+<!--<h1>Send Me an Email!</h1>
     <form action="https://mailthis.to/arlene"
     method="POST" encType="multipart/form-data">
     <input type="text" name="name" placeholder="Your name">
@@ -44,7 +51,4 @@
     <input type="file" name="file" placeholder="Attachments (optional)">
     <input type="hidden" name="_subject" value="Contact form submitted">
     <input type="submit" value="Send">
-</form>
-
-    </body>
-</html>
+    </form>-->
