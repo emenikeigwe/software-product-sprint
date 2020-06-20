@@ -17,25 +17,54 @@ package com.google.sps.servlets;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import com.google.gson.Gson;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
-public class DataServlet extends HttpServlet {
-  private ArrayList<String> messages = new ArrayList<String>(Arrays.asList("Hello", "Mellow", "Fellow"));
+public final class DataServlet extends HttpServlet {
+  private HashMap<String, String> comments = new HashMap<String, String>();
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // Get the input from the form.
+    String commenter = getParameter(request, "comment-name", "");
+    String comment = getParameter(request, "comment", "");
+
+    LocalDateTime commentTime = LocalDateTime.now();
+    DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+
+    String formattedCommentTime = commentTime.format(formatter);
+    String combined = commenter+" "+formattedCommentTime;
+
+    comments.put(combined, comment);
+    //comment content: remove later
+    response.setContentType("text/html;");
+    response.getWriter().println(comments);
+  }
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("application/json;");
-    response.getWriter().println(convertToJsonUsingGson(messages));
+    response.getWriter().println(convertToJsonUsingGson(comments));
   }
-  private String convertToJsonUsingGson(ArrayList<String> messages) {
+  private String convertToJsonUsingGson(HashMap<String, String> comments) {
     Gson gson = new Gson();
-    String json = gson.toJson(messages);
+    String json = gson.toJson(comments);
     return json;
+  }
+
+  private String getParameter(HttpServletRequest request, String name, String defaultValue) {
+    String value = request.getParameter(name);
+    if (value == null) {
+      return defaultValue;
+    }
+    return value;
   }
 }
