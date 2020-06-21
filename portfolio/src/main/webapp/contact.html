@@ -7,6 +7,8 @@
         <script src="script.js"></script>
     </head>
 
+    <!--<body onload="getContent()">-->
+
     <body onload="getContent()">
     <header>
         <div class="header">
@@ -35,10 +37,27 @@
             </ul>
         </div>
     </header>
-    <div id="content">
+    <!--<div id="content">
       <h1>Data Content</h1>
       <div id="data-container"></div>
-    </div>
+    </div>-->
+    <h1>Contact Me!</h1>
+    <form action="/data" method="POST">
+      <label for="comment-name" style="display:block;">Name:</label>
+      <input type="text" id="comment-name" name="comment-name" placeholder="Your name...">
+      </br></br>
+
+      <label for="comment" style="display:block;">Comment:</label>
+      <div id='textAreaHolder'>
+          <textarea id="comment" name="comment" placeholder="Add a comment..."></textarea>
+      </div>
+      </br></br>
+
+      <input type="submit" value="Post Comment">
+      </br></br>
+      
+      <div id='comment-container'></div>
+    </form>
     </body>
 </html>
 
