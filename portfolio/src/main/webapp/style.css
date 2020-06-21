@@ -1,9 +1,77 @@
+html{
+    position: fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
 #content {
   margin-left: auto;
   margin-right: auto;
   width: 650px;
 }
+body {
+    display:grid;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+.header {
+    padding-top: 24px;
+    padding-right: 20px;
+    float: right;
+}
+#headshot{
+  margin-left: 50%;
+  width: 50%;
+  left: 0px;
+}
+#name {
+    color: #94DEFE;
+    text-align: center;
+    right: 0px;
+    font-family: 'Varela Round';
+    font-size: 150px;
 
-#greeting-container {
-  margin-top: 20px;
+    /*width: 650px;
+    position: absolute;
+    font: 350% 'Source Code Pro', monospace;
+    left: 50%;
+    top: 28%;*/
+}
+.container {
+  display: table;
+  width: 100%;
+}
+
+.headshot{
+  border-radius: 50%;
+  position: absolute;
+  left: 0px;
+}
+
+.name-main{
+  position: absolute;
+  right: 0px;
+  width: 50%;
+  color: #94DEFE;
+  font-family: 'Varela Round';
+  text-align: center;
+  font-size: 50px;
+}
+
+.home-nav {
+  padding-top: 10px;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  letter-spacing: .1em;
+  position: relative;
+  font-size: 1.7vw;
+  height: 6vh; 
+  overflow-y: visible;
+  text-transform: uppercase;
 }

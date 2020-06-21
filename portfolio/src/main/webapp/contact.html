@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Arlene's Portfolio</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+    </head>
+
+    <!--<body onload="getContent()">-->
+
+    <body onload="getContent()">
+    <header>
+        <div class="header">
+            <div id="name-home">
+                <a href = "/">Arlene Godfreey-Igwe</a>
+            </div>
+            <ul class="pages">
+                <li id="page">
+                    <a href = "/about.html">About</a>
+                </li>
+                <li id="page">
+                    <a href= "/resume.html">Resume</a>
+                </li>
+                <li id="page" class = "current">
+                    <a href= "contact.html">Contact Me</a>
+                </li>
+                <li id = "page">
+                    <a href= "https://linkedin.com/in/arleneigwe" target = "_blank">
+                        <img src = "" alt = "LinkedIn">
+                    </a>
+                <li id = "page">
+                    <a href = "https://github.com/strugglebus129" target="_blank">
+                        <img src = "" alt = "Github">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <!--<div id="content">
+      <h1>Data Content</h1>
+      <div id="data-container"></div>
+    </div>-->
+    <h1>Contact Me!</h1>
+    <form action="/data" method="POST">
+      <label for="comment-name" style="display:block;">Name:</label>
+      <input type="text" id="comment-name" name="comment-name" placeholder="Your name...">
+      </br></br>
+
+      <label for="comment" style="display:block;">Comment:</label>
+      <div id='textAreaHolder'>
+          <textarea id="comment" name="comment" placeholder="Add a comment..."></textarea>
+      </div>
+      </br></br>
+
+      <input type="submit" value="Post Comment">
+      </br></br>
+      
+      <div id='comment-container'></div>
+    </form>
+    </body>
+</html>
+
+<!--<h1>Send Me an Email!</h1>
+    <form action="https://mailthis.to/arlene"
+    method="POST" encType="multipart/form-data">
+    <input type="text" name="name" placeholder="Your name">
+    <input type="email" name="_replyto" placeholder="Your email">
+    <textarea name="message" placeholder="Enter your message here"></textarea>
+    <input type="file" name="file" placeholder="Attachments (optional)">
+    <input type="hidden" name="_subject" value="Contact form submitted">
+    <input type="submit" value="Send">
+    </form>-->

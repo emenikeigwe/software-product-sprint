@@ -11,11 +11,22 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+function getContent() {
+    console.log('Retrieving content...')
+    fetch('/data').then(response => response.text()).then(dat =>{
+        //console.log('This is the content: '+dat);
+        document.getElementById('comment-container').innerText = dat;
+    });
+}
+
+
+
+
 
 /**
  * Adds a random greeting to the page.
  */
-function addRandomGreeting() {
+/*function addRandomGreeting() {
   const greetings =
       ['For the honor of Grayskull!', 'Cookie Cat!',
       'I am Sailor Moon! And now in the name of Moon I\'ll punish you!', 'See you Space Cowboy...'];
@@ -26,4 +37,4 @@ function addRandomGreeting() {
   // Add it to the page.
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
-}
+}*/
