@@ -14,8 +14,8 @@
 function getContent() {
     console.log('Retrieving content...')
     fetch('/data').then(response => response.text()).then(dat =>{
-        console.log('This is the content: '+dat);
-        document.getElementById('data-container').innerText = dat;
+        //console.log('This is the content: '+dat);
+        document.getElementById('comment-container').innerText = dat;
     });
 }
 
