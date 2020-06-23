@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+//export GOOGLE_APPLICATION_CREDENTIALS="/home/agodfreeyigwe/key.json"
 package com.google.sps.servlets;
 
 import java.util.List;
@@ -23,6 +24,9 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.cloud.language.v1.Document;
+import com.google.cloud.language.v1.LanguageServiceClient;
+import com.google.cloud.language.v1.Sentiment;
 import com.google.sps.data.Comment;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -49,13 +53,14 @@ public final class DataServlet extends HttpServlet {
         String name = (String) entity.getProperty("name");
         String comment = (String) entity.getProperty("comment");
         long timestamp = (long) entity.getProperty("timestamp");
+        double score = (double) entity.getProperty("score");
 
-        Comment commentInfo = new Comment(id, name, comment, timestamp);
+        Comment commentInfo = new Comment(id, name, comment, timestamp, score);
         comments.add(commentInfo);
     }
     response.setContentType("application/json;");
     response.getWriter().println(convertToJsonUsingGson(comments));
-
+    
     //Create timestamp
     long timestamp = System.currentTimeMillis();
 
@@ -63,11 +68,20 @@ public final class DataServlet extends HttpServlet {
     String name = request.getParameter("comment-name");
     String comment = request.getParameter("comment");
 
+    //Get Sentiment Score
+    Document doc =
+        Document.newBuilder().setContent(comment).setType(Document.Type.PLAIN_TEXT).build();
+    LanguageServiceClient languageService = LanguageServiceClient.create();
+    Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
+    double score = (double)sentiment.getScore();
+    languageService.close();
+
     //Create Entity w/ kind comment
     Entity commentEntity = new Entity("Comment");
     commentEntity.setProperty("name", name);
     commentEntity.setProperty("timestamp", timestamp);
     commentEntity.setProperty("comment", comment);
+    commentEntity.setProperty("score", score);
 
     //Store comment
     datastore.put(commentEntity);
@@ -97,8 +111,9 @@ public final class DataServlet extends HttpServlet {
         String name = (String) entity.getProperty("name");
         String comment = (String) entity.getProperty("comment");
         long timestamp = (long) entity.getProperty("timestamp");
+        double score = (double)entity.getProperty("score");
 
-        Comment commentInfo = new Comment(id, name, comment, timestamp);
+        Comment commentInfo = new Comment(id, name, comment, timestamp, score);
         comments.add(commentInfo);
     }
     response.setContentType("application/json;");
